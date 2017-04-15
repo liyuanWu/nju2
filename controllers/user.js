@@ -66,8 +66,27 @@ exports.setting = function (req, res, next) {
 
 exports.editName = function (req, res, next) {
   var user_id = req.session.user._id;
-  var edited_name = req.body.name;
+  var edited_name = req.body.value;
+  if(!edited_name){
+    return res.redirect('back');
+  }
   User.updateName(user_id, edited_name, function (err, user) {    
+    return res.redirect('back');
+  });
+};
+
+exports.editMajor = function (req, res, next) {
+  var user_id = req.session.user._id;
+  var edited_major = req.body.major;
+  User.updateMajor(user_id, edited_major, function (err, user) {
+    return res.redirect('back');
+  });
+};
+
+exports.editYear = function (req, res, next) {
+  var user_id = req.session.user._id;
+  var edited_year = req.body.value;
+  User.updateYear(user_id, edited_year, function (err, user) {
     return res.redirect('back');
   });
 };

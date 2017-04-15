@@ -8,14 +8,16 @@ exports.homepage = function(req, res, next) {
     return res.redirect('/index');
   }
   return res.render('homepage', {
-    title: 'zhihu-与世界分享你的知识', 
+    title: 'NJU2 - 与南大校友分享,合作,经历',
     err: req.flash('err').toString(),
     loginErr: req.flash('loginErr').toString()
   });
 };
 
 exports.register = function (req, res, next) {
-  var name = req.body.username,
+  var major = req.body.major,
+      year = req.body.year,
+      name = req.body.username,
       phoneOrEmail = req.body.phoneoremail,
       password = req.body.password;
   if (name === '' || name === null) {
@@ -29,7 +31,7 @@ exports.register = function (req, res, next) {
   // 密码md5加盐加密
   var md5 = crypto.createHash('md5'),
       password = md5.update(password + password_salt).digest('hex');
-  User.newUserSave(name, phoneOrEmail, password, function (err, user) {
+  User.newUserSave(name, major, year, phoneOrEmail, password, function (err, user) {
     if (err) {
       req.flash('err', err.message);
       return res.redirect('/');

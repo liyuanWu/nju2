@@ -9,7 +9,7 @@ body {
 
 .index_wrapper {
   .top {
-    background-color: #0078d8;
+    background-color: #73116f;
     padding: 50px;
     min-height: 400px;
       .login_form {
@@ -64,9 +64,18 @@ body {
   }
 }
 
+body{
+  background: #EDEADF;
+}
+
 .change-input-form-color {
   background-color: #e7f1f8;
 }
+
+.change-select-form-color .btn-group .btn{
+  background-color: #e7f1f8;
+}
+
 
 .change-register-form-color {
   background-color: #74b1f7;

@@ -41,6 +41,9 @@ router.get('/topic/:tag', topic.tag);                                      // �
 router.get('/home', auth.userRequired, user.home);                         // 用户主页
 router.get('/setting', auth.userRequired, user.setting);                   // 用户设置
 router.post('/user/:u_id/name', auth.userRequired, user.editName);         // 修改姓名
+router.post('/user/:u_id/major', auth.userRequired, user.editMajor);         // 修改院系
+router.post('/user/:u_id/year', auth.userRequired, user.editYear);         // 修改入学年份
+
 router.post('/user/:u_id/email', auth.userRequired, user.editEmail);       // 修改邮箱
 router.post('/user/:u_id/phone', auth.userRequired, user.editPhone);       // 修改邮箱
 router.post('/user/:u_id/password', auth.userRequired, user.editPassword); // 修改密码

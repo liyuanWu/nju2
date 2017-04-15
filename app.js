@@ -26,7 +26,7 @@ app.use(flash());
 app.use(errorPageMiddleware.errorPage);
 
 // uncomment after placing your favicon in /public
-app.use(favicon(path.join(__dirname, 'public/images/static', 'zhihu_favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public/images/static', 'favicon.ico')));
 // 现在是dev环境，上线要换
 app.use(logger('dev'));
 app.use(bodyParser.json());

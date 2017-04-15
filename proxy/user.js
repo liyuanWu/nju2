@@ -1,36 +1,37 @@
 var models = require('../models');
 var User = models.User;
 
-exports.newUserSave = function (name, phoneOrEmail, password, callback) {
+exports.newUserSave = function (name, major, year, phoneOrEmail, password, callback) {
+  var newUser = new User();
+  newUser.name = name;
+  newUser.major = major;
+  newUser.year = year.toString();
+
   // email 符合规则
   if (isEmail(phoneOrEmail)) {
-    User.find({ email: phoneOrEmail }, function (err, user) {
-      if (user.length > 0) {
+    User.find({ email: phoneOrEmail }, function (err, existingUsers) {
+      if (existingUsers.length > 0) {
         err = {};
         err.message = '该邮箱已被注册！';
-        return callback(err, user);
+        return callback(err, existingUsers);
       }
       // 没被注册
-      var user = new User();
-      user.name = name;
-      user.email = phoneOrEmail;
-      user.password = password;
-      user.save(callback);
+      newUser.email = phoneOrEmail;
+      newUser.password = password;
+      newUser.save(callback);
     });
   } 
   else if (isPhone(phoneOrEmail)) {
-    User.find({ phone: phoneOrEmail }, function (err, user) {
-      if (user.length > 0) {
+    User.find({ phone: phoneOrEmail }, function (err, existingUsers) {
+      if (existingUsers.length > 0) {
         err = {};
         err.message = '该手机号已被注册！';
-        return callback(err, user);
+        return callback(err, existingUsers);
       }
       // 没被注册
-      var user = new User();
-      user.name = name;
-      user.phone = phoneOrEmail;
-      user.password = password;
-      user.save(callback);
+      newUser.phone = phoneOrEmail;
+      newUser.password = password;
+      newUser.save(callback);
     });
   }
   else {
@@ -84,6 +85,14 @@ exports.updateAvarar = function (user_id, avatar_path, callback) {
 
 exports.updateName = function (user_id, user_name, callback) {
   User.findByIdAndUpdate(user_id, { $set:{ name: user_name }}, callback);
+};
+
+exports.updateMajor = function (user_id, user_major, callback) {
+  User.findByIdAndUpdate(user_id, { $set:{ major: user_major }}, callback);
+};
+
+exports.updateYear = function (user_id, user_year, callback) {
+  User.findByIdAndUpdate(user_id, { $set:{ year: user_year }}, callback);
 };
 
 exports.updateEmail = function (user_id, edited_email, callback) {
