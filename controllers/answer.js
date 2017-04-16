@@ -7,7 +7,7 @@ var Push = require('../proxy').Push;
 exports.answer = function (req, res, next) {
   var question_id = req.params.q_id,
       author_id = req.session.user._id,
-      author_name = req.session.user.name,
+      author_name = req.session.user.major + "-" + req.session.user.year + "-" + req.session.user.name,
       author_avatar = req.session.user.avatar,
       content = req.body.answer;
   if (content == '') {
