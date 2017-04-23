@@ -1,12 +1,15 @@
-# mock-zhihu
-仿の知乎Web。简单模仿。这个项目始于8月25号。<br>
-(已过期)已经部署在百度云bae上：[仿·知乎](http://zhiihu.duapp.com/)
 
-## Screenshot
-![](https://github.com/yxfanxiao/zhihu/raw/master/screenshot.png)
+# NJU2
+校内社区问答网站
+
+## Developer Guide
+0. Clone from https://github.com/liyuanWu/nju2.git
+1. Create new branch for the new feature u want to add (eg. searchUser)
+2. Finish the feature and push to remote repo
+3. Create pull request to merge into master
+4. After other developers have reviewed the change, merge into master
 
 ## 本地部署
-node: v0.12.7，mongodb: v3.0.5
 > 0. git clone https://github.com/yxfanxiao/zhihu.git
 > 1. 启动mongodb (如果你端口不是27017，在configure.js改)
 > 2. cd && npm start (不需要npm install)
@@ -32,4 +35,3 @@ node: v0.12.7，mongodb: v3.0.5
 * 关注问题 + 动态推送 √
 * 关注人 + （赞、提出问题、关注问题、回答问题）  正在做ing
 
-。
